@@ -1,0 +1,28 @@
+{
+  "name": "pj-park-mobile",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode dev",
+    "dev:test": "vite --mode test",
+    "build": "vite build --mode prod",
+    "build:test": "vite build --mode test",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "mockjs": "^1.1.0",
+    "pinia": "^3.0.1",
+    "vant": "^4.9.20",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/mockjs": "^1.0.10",
+    "@types/node": "^22.13.10",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2"
+  }
+}

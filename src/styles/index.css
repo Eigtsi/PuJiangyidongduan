@@ -1,0 +1,380 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+:root {
+  --app-nav-height: 1.1rem;
+  color: #182230;
+  background: #f5f6f8;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial,
+    sans-serif;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  color: #182230;
+  font-size: 0.26rem;
+  line-height: 1.5;
+  background: #f5f6f8;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* 页面容器 */
+.page {
+  min-height: calc(100vh - var(--app-nav-height));
+  padding-bottom: 0.3rem;
+}
+
+.content-padding {
+  padding: 0 0.28rem;
+}
+
+/* 应用外壳 + 底部 Tab */
+.app-shell {
+  height: 100vh;
+  overflow: hidden;
+  background: #f5f6f8;
+}
+
+.app-main {
+  height: 100vh;
+  padding-top: calc(var(--app-nav-height) + env(safe-area-inset-top));
+  padding-bottom: calc(50px + env(safe-area-inset-bottom));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  min-height: calc(var(--app-nav-height) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  background: #fff;
+  border-bottom: 1px solid #edf0f4;
+  box-shadow: 0 0.08rem 0.24rem rgba(24, 34, 48, 0.06);
+}
+
+.shell-header-portal {
+  width: 100%;
+}
+
+/* 首页头部 */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--app-nav-height);
+  padding: 0.18rem 1rem 0.12rem 0.28rem; /* 右侧预留“切换身份”图标位 */
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #182230;
+  font-size: 0.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.page-header .page-header-park {
+  color: #8c98a8;
+  font-size: 0.22rem;
+  white-space: nowrap;
+}
+
+/* 详情页返回头 */
+.detail-header {
+  display: flex;
+  align-items: center;
+  height: var(--app-nav-height);
+  padding: 0 0.1rem;
+}
+
+.detail-header .back-btn {
+  display: grid;
+  width: 0.64rem;
+  height: 0.64rem;
+  place-items: center;
+  color: #182230;
+  font-size: 0.4rem;
+}
+
+.detail-header .title {
+  flex: 1;
+  overflow: hidden;
+  color: #182230;
+  font-size: 0.32rem;
+  font-weight: 600;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-header .right {
+  width: 0.64rem;
+}
+
+/* 分区标题 */
+.section-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.36rem 0 0.2rem;
+  padding-left: 0.18rem;
+  color: #182230;
+  font-size: 0.3rem;
+  font-weight: 700;
+}
+
+.section-title::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.06rem;
+  height: 0.28rem;
+  content: '';
+  background: linear-gradient(180deg, #1677ff, #2e8df6);
+  border-radius: 0.03rem;
+  transform: translateY(-50%);
+}
+
+.section-title .count {
+  color: #8c98a8;
+  font-size: 0.22rem;
+  font-weight: 400;
+}
+
+/* 卡片 */
+.card {
+  margin-top: 0.24rem;
+  padding: 0.28rem 0.24rem;
+  background: #fff;
+  border-radius: 0.16rem;
+  box-shadow: 0 0.08rem 0.24rem rgba(24, 34, 48, 0.04);
+}
+
+.card-title {
+  margin-bottom: 0.2rem;
+  color: #182230;
+  font-size: 0.3rem;
+  font-weight: 700;
+}
+
+/* 信息键值 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.22rem 0.16rem;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.info-row.full {
+  grid-column: 1 / -1;
+}
+
+.info-row .label {
+  color: #8c98a8;
+  font-size: 0.22rem;
+}
+
+.info-row .value {
+  margin-top: 0.06rem;
+  overflow-wrap: break-word;
+  color: #182230;
+  font-size: 0.26rem;
+  font-weight: 500;
+}
+
+.info-row .value.intro {
+  color: #4a5568;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* 标签 */
+.industry-tag {
+  display: inline-block;
+  padding: 0.04rem 0.14rem;
+  color: #1677ff;
+  font-size: 0.2rem;
+  background: #eaf3ff;
+  border-radius: 0.08rem;
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 0.04rem 0.12rem;
+  font-size: 0.2rem;
+  border-radius: 0.08rem;
+}
+
+.tag-green {
+  color: #16a46b;
+  background: #e8f7f0;
+}
+
+.tag-orange {
+  color: #f39b24;
+  background: #fff7e6;
+}
+
+.tag-red {
+  color: #e6535a;
+  background: #fff1f0;
+}
+
+.tag-blue {
+  color: #1677ff;
+  background: #eaf3ff;
+}
+
+.tag-gray {
+  color: #8c98a8;
+  background: #f0f2f5;
+}
+
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.16rem;
+  padding: 0.34rem 0.42rem;
+  color: #fff;
+  font-size: 0.24rem;
+  background: rgba(24, 34, 48, 0.78);
+  border-radius: 0.14rem;
+}
+
+/* 指标卡片（运营/营收/绿色等页复用） */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.16rem;
+}
+
+.metric-item {
+  padding: 0.24rem;
+  text-align: center;
+  background: #f5f7fa;
+  border-radius: 0.12rem;
+}
+
+.metric-value {
+  color: #1677ff;
+  font-size: 0.34rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.metric-value i {
+  margin-left: 0.04rem;
+  font-size: 0.2rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.metric-label {
+  margin-top: 0.06rem;
+  color: #8c98a8;
+  font-size: 0.22rem;
+}
+
+/* 进度条 */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.16rem;
+}
+
+.progress-row .p-name {
+  flex-shrink: 0;
+  width: 1.4rem;
+  color: #4a5568;
+  font-size: 0.24rem;
+}
+
+.progress-track {
+  flex: 1;
+  height: 0.12rem;
+  overflow: hidden;
+  background: #edf0f4;
+  border-radius: 0.06rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1677ff, #2e8df6);
+  border-radius: 0.06rem;
+}
+
+.progress-row .p-value {
+  flex-shrink: 0;
+  width: 0.9rem;
+  color: #182230;
+  font-size: 0.24rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* 业务入口网格 */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.2rem;
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  padding: 0.24rem 0.08rem;
+  background: #f7f8fa;
+  border-radius: 0.12rem;
+}
+
+.quick-icon {
+  display: grid;
+  width: 0.72rem;
+  height: 0.72rem;
+  place-items: center;
+  color: #1677ff;
+  font-size: 0.36rem;
+  background: #eaf3ff;
+  border-radius: 0.16rem;
+}
+
+.quick-label {
+  color: #182230;
+  font-size: 0.24rem;
+}
